@@ -5,13 +5,14 @@
 
 #define FWD KC_BTN5
 #define BACK KC_BTN4
-#define SPACE_L A(G(KC_LEFT))
-#define SPACE_R A(G(KC_RGHT))
+#define SPACE_L LAG(KC_LEFT)
+#define SPACE_R LAG(KC_RGHT)
 #define KC_VOLU KC_KB_VOLUME_UP
 #define KC_VOLD KC_KB_VOLUME_DOWN
 #define KC_MUTE KC_KB_MUTE
 // lead keys should have higher priority over shotcuts
 #define APPMENU G(KC_A)
+#define LOCK G(KC_L)
 
 enum layers
 {
@@ -42,11 +43,11 @@ enum custom_keycodes
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [DEF] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-      XXXXXXX,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G, XXXXXXX,    XXXXXXX,    KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,
+       KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G, KC_PSCR,    XXXXXXX,    KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-       KC_ESC,    KC_A,    KC_R,    KC_S,    KC_T,    KC_D, XXXXXXX,    XXXXXXX,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
+      SW_LANG,    KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    LOCK,    XXXXXXX,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
-      SW_LANG,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ENT,
+      XXXXXXX,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_QUOT,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
                                           KC_LSFT, TL_UPPR,  KC_TAB,     KC_SPC, TL_LOWR, KC_RSFT
                                       //`--------------------------'  `--------------------------'
@@ -56,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
       _______, XXXXXXX, KC_LBRC, KC_LCBR, KC_LPRN, KC_TILD, _______,    _______, KC_HASH, KC_RPRN, KC_RCBR, KC_RBRC,  KC_GRV, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-      _______, KC_MINS, KC_ASTR,  KC_EQL, KC_UNDS, KC_CIRC, _______,    _______,  KC_DLR, OS_CTRL, OS_SHFT,  OS_ALT,  OS_CMD, XXXXXXX,
+      _______, KC_MINS, KC_ASTR,  KC_EQL, KC_UNDS, KC_CIRC, _______,    _______,  KC_DLR, OS_CTRL, OS_SHFT,  OS_ALT,  OS_CMD, _______,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
       _______, KC_PLUS, KC_PIPE,   KC_AT, KC_SLSH, KC_PERC,                      XXXXXXX, KC_BSLS, KC_AMPR, KC_EXLM, KC_QUES, _______,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
@@ -66,9 +67,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [NAV] = LAYOUT_split_3x6_3_ex2(
   //,--------------------------------------------------------------.  ,--------------------------------------------------------------.
-       MACRO1, XXXXXXX,  SW_WIN,SW_TAB_L,SW_TAB_R, KC_VOLU, _______,    _______, KC_DOWN, KC_RGHT, KC_HOME,  KC_END,  KC_DEL, _______,
+      _______, XXXXXXX,  SW_WIN,SW_TAB_L,SW_TAB_R, KC_VOLU,  MACRO1,    _______, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-      _______,  OS_CMD,  OS_ALT, OS_SHFT, OS_CTRL, KC_VOLD, _______,    _______, KC_LEFT, XXXXXXX, XXXXXXX, APPMENU, XXXXXXX, _______,
+      _______,  OS_CMD,  OS_ALT, OS_SHFT, OS_CTRL, KC_VOLD, _______,    _______, KC_LEFT, KC_HOME,  KC_END, APPMENU, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------+--------'  `--------+--------+--------+--------+--------+--------+--------|
       _______, SPACE_L, SPACE_R,    BACK,     FWD, KC_MUTE,                        KC_UP, KC_PGDN, KC_PGUP, XXXXXXX, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------+--------.  ,--------+--------+--------+--------+--------+--------+--------|
